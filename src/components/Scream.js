@@ -18,6 +18,8 @@ const styles = {
     },
     image: {
         minWidth: 200,
+        margin:2,
+        objectFit: 'cover'
 
     },
     content: {
