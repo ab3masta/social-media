@@ -31,13 +31,13 @@ export const signupUser = (newUserData, history) => (dispatch) => {
             payload: error.response.data
         });
     });
-}
+};
 
 export const logoutUser = () => (dispatch) => {
     localStorage.removeItem('FBIdToken');
     delete axios.defaults.headers.common['Authorization'];
     dispatch({ type: SET_UNAUTHENTICATED });
-}
+};
 export const getUserData = () => (dispatch) => {
     dispatch({ type: LOADING_USER });
     axios.get('/user').then(res => {
@@ -48,10 +48,17 @@ export const getUserData = () => (dispatch) => {
     }).catch(error => {
         console.log(error);
     });
-}
+};
+
+export const uploadImage = (formData) => (dispatch) => {
+    dispatch({ type: LOADING_USER });
+    axios.post('/user/image', formData).then(() => {
+        dispatch(getUserData());
+    }).catch(error => { console.log(error); });
+};
 
 const setAuthorizationHeader = (token) => {
     const FBIdToken = `Bearer ${token}`;
     localStorage.setItem('FBIdToken', FBIdToken);
     axios.defaults.headers.common['Authorization'] = FBIdToken;
-}
+};
