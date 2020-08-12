@@ -20,10 +20,12 @@ import { likeScream, unlikeScream } from '../redux/actions/dataActions';
 import ChatIcon from '@material-ui/icons/Chat';
 import FavoriteBorder from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import DeleteScream from './DeleteScream';
 
 
 const styles = {
     card: {
+        position:'relative',
         display: 'flex',
         marginBottom: 20,
     },
@@ -60,7 +62,8 @@ class Scream extends Component {
             classes,
             scream: { body, createAt, userImage, userHandle, screamsId, likeCount, commentCount },
             user: {
-                authenticated
+                authenticated,
+                credentials: { handle }
             }
         } = this.props;
 
@@ -81,14 +84,24 @@ class Scream extends Component {
                         </MyButtons>
                     )
             );
-
+        const deleteButton = authenticated && userHandle === handle ? (
+            <DeleteScream screamsId={screamsId}/>
+        ) : null;
         return (
             <Card className={classes.card}>
                 <CardMedia image={userImage} title="Profile image" className={classes.image} />
                 <CardContent className={classes.content}>
-                    <Typography variant="h5" component={Link} to={`/users/${userHandle}`} color="primary">{userHandle}</Typography>
-                    <Typography variant="body2" color="textSecondary">{dayjs(createAt).fromNow()}</Typography>
-                    <Typography variant="body1">{body}</Typography>
+                    <Typography variant="h5" component={Link} to={`/users/${userHandle}`} color="primary">
+                        {userHandle}
+                    </Typography>
+                    {deleteButton}
+                    <Typography variant="body2" color="textSecondary">
+                        {dayjs(createAt).fromNow()}
+                    </Typography>
+
+                    <Typography variant="body1">
+                        {body}
+                    </Typography>
                     {likeButton}
                     <span>{likeCount} Likes</span>
                     <MyButtons tip="comments">
