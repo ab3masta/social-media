@@ -12,9 +12,10 @@ import { Tooltip, IconButton, Dialog, DialogTitle, DialogContent, TextField, Dia
 
 // icon
 import EditIcon from '@material-ui/icons/Edit';
+import MyButtons from '../utils/MyButtons';
 const styles = (theme) => ({
     ...theme.spreadThis,
-    button : {
+    button: {
         float: 'right'
     }
 });
@@ -70,11 +71,12 @@ class EditDetails extends Component {
         const { classes } = this.props;
         return (
             <Fragment>
-                <Tooltip title="Edit details" placement="top">
-                    <IconButton onClick={this.handleOpen} className={classes.button}>
-                        <EditIcon color="primary" />
-                    </IconButton>
-                </Tooltip>
+                
+                <MyButtons tip="Edit details" placement="top"
+                    onClick={this.handleOpen} btnClassName={classes.button}>
+                    <EditIcon color="primary" />
+                </MyButtons>
+
                 <Dialog open={this.state.open} onClose={this.handleClose} fullWidth maxWidth="sm">
                     <DialogTitle>Edit your details </DialogTitle>
                     <DialogContent>
