@@ -48,10 +48,10 @@ export const postScream = (newScream) => (dispatch) => {
         return;
     }).catch((error) => {
         console.log('error to post scream');
-        dispatch({
-            type: SET_ERRORS,
-            payload: error.response.data
-        });
+        // dispatch({
+        //     type: SET_ERRORS,
+        //     payload: error.response.data
+        // });
     });
 };
 

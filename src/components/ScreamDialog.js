@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import propTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import dayjs from 'dayjs';
+import LikeButton from './LikeButton';
 
 //Redux
 import { connect } from 'react-redux';
@@ -13,6 +14,7 @@ import TextField from '@material-ui/core/TextField';
 //Icons
 import UnfolMore from '@material-ui/icons/UnfoldMore';
 import CloseIcon from '@material-ui/icons/Close';
+import ChatIcon from '@material-ui/icons/Chat';
 
 import MyButtons from '../utils/MyButtons';
 import { Link } from 'react-router-dom';
@@ -32,9 +34,18 @@ const styles = (theme) => ({
     DialogContent: {
         padding: '20px'
     },
-    closeButton : {
+    closeButton: {
         position: 'absolute',
         left: '90%'
+    },
+    expandButton: {
+        position: 'absolute',
+        left: '90%'
+    },
+    spinnerDiv: {
+        textAlign: 'center',
+        marginTop: 50,
+        marginBottom: 50
     }
 });
 
@@ -52,11 +63,13 @@ class ScreamDialog extends Component {
 
     render() {
         const { classes,
-            scream: { body, createAt, likeCount, commentCount, userImage, userHandle },
+            scream: { screamId, body, createAt, likeCount, commentCount, userImage, userHandle },
             UI: { loading } } = this.props;
 
         const dialogMarkup = loading ? (
-            <CircularProgress size={200} />
+            <div className={classes.spinnerDiv}>
+                <CircularProgress size={200} thickness={2} />
+            </div>
         ) : (
                 <Grid container spacing={16}>
                     <Grid item sm={5}>
@@ -74,6 +87,15 @@ class ScreamDialog extends Component {
                         <Typography variant="body1">
                             {body}
                         </Typography>
+
+                        <LikeButton screamsId={screamId} />
+
+                        <span>{likeCount} Likes</span>
+                        <MyButtons tip="comments">
+                            <ChatIcon color="primary" />
+                        </MyButtons>
+                        <span>{commentCount} comments</span>
+
                     </Grid>
                 </Grid>
             );
