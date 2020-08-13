@@ -34,6 +34,7 @@ class Login extends Component {
             this.setState({ errors: nextProps.UI.errors });
         }
     }
+    
     handleSubmit = (event) => {
         event.preventDefault();
         const userData = {

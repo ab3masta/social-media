@@ -8,7 +8,7 @@ import { editUserDetails } from '../redux/actions/userActions';
 
 // MUI stuff
 
-import { Tooltip, IconButton, Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button } from '@material-ui/core';
+import { Tooltip, IconButton, Dialog, DialogTitle, DialogContent, TextField, DialogActions, Button  } from '@material-ui/core';
 
 // icon
 import EditIcon from '@material-ui/icons/Edit';
