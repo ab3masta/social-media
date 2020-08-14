@@ -2,12 +2,12 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import propTypes from 'prop-types';
-import PostScream from './PostScream';
+import PostScream from '../scream/PostScream';
 // MUI stuff 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import MyButtons from '../utils/MyButtons';
+import MyButtons from '../../utils/MyButtons';
 
 //Icons
 import AddIcon from '@material-ui/icons/Add';

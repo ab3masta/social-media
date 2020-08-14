@@ -4,7 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 //Redux
 import { connect } from 'react-redux';
-import { editUserDetails } from '../redux/actions/userActions';
+import { editUserDetails } from '../../redux/actions/userActions';
 
 // MUI stuff
 
@@ -12,7 +12,7 @@ import { Tooltip, IconButton, Dialog, DialogTitle, DialogContent, TextField, Dia
 
 // icon
 import EditIcon from '@material-ui/icons/Edit';
-import MyButtons from '../utils/MyButtons';
+import MyButtons from '../../utils/MyButtons';
 const styles = (theme) => ({
     ...theme.spreadThis,
     button: {

@@ -14,6 +14,15 @@ export default {
         },
     },
     spreadThis: {
+        invisibleSeparator: {
+            border: 'none',
+            margin: '4px'
+        },
+        visibleSeparator: {
+            width: '100%',
+            borderBottom: '1px solid rgba(0,0,0,0.1)',
+            marginBottom: 20
+        },
         typography: {
             useNextvariants: true,
         },

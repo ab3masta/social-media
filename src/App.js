@@ -10,7 +10,7 @@ import store from './redux/store';
 import { SET_AUTHENTICATED } from './redux/types';
 import { logoutUser, getUserData } from './redux/actions/userActions';
 // Components
-import NavBar from './components/navBar';
+import NavBar from './components/layout/navBar';
 import themeFile from './utils/theme';
 import jwtDecode from 'jwt-decode';
 // Pages

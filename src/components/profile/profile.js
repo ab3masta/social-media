@@ -19,8 +19,8 @@ import CalendarToday from '@material-ui/icons/CalendarToday';
 
 // Redux
 import { connect } from 'react-redux';
-import { logoutUser, uploadImage } from '../redux/actions/userActions';
-import MyButtons from '../utils/MyButtons';
+import { logoutUser, uploadImage } from '../../redux/actions/userActions';
+import MyButtons from '../../utils/MyButtons';
 
 const styles = (theme) => ({
     paper: {

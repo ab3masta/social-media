@@ -4,7 +4,7 @@ import withStyles from '@material-ui/core/styles/withStyles';
 
 //Redux
 import { connect } from 'react-redux';
-import { postScream, clearErrors } from '../redux/actions/dataActions';
+import { postScream, clearErrors } from '../../redux/actions/dataActions';
 
 // MUI stuff
 import { Dialog, DialogTitle, DialogContent, Button, CircularProgress } from '@material-ui/core';
@@ -13,7 +13,7 @@ import TextField from '@material-ui/core/TextField';
 import AddIcon from '@material-ui/icons/Add';
 import CloseIcon from '@material-ui/icons/Close';
 
-import MyButtons from '../utils/MyButtons';
+import MyButtons from '../../utils/MyButtons';
 
 const styles = (theme) => ({
     ...theme.spreadThis,
@@ -48,7 +48,7 @@ class PostScream extends Component {
             });
         }
         if (!nextProps.UI.errors && !nextProps.UI.loading) {
-            this.setState({ body: '',open: false, errors: {}});
+            this.setState({ body: '', open: false, errors: {} });
         }
     };
 

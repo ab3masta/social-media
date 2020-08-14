@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import propTypes from 'prop-types';
-import MyButtons from '../utils/MyButtons';
+import MyButtons from '../../utils/MyButtons';
 import ScreamDialog from './ScreamDialog';
 //MUI Stuff
 import Card from '@material-ui/core/Card';

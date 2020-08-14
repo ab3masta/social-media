@@ -3,10 +3,9 @@ import propTypes from 'prop-types';
 import withStyles from '@material-ui/core/styles/withStyles';
 import dayjs from 'dayjs';
 import LikeButton from './LikeButton';
-
+import Comments from './Comments';
 //Redux
 import { connect } from 'react-redux';
-import { getScream } from '../redux/actions/dataActions';
 
 // MUI stuff
 import { Dialog, DialogTitle, DialogContent, Button, CircularProgress, Grid, Typography } from '@material-ui/core';
@@ -16,15 +15,12 @@ import UnfolMore from '@material-ui/icons/UnfoldMore';
 import CloseIcon from '@material-ui/icons/Close';
 import ChatIcon from '@material-ui/icons/Chat';
 
-import MyButtons from '../utils/MyButtons';
+import MyButtons from '../../utils/MyButtons';
 import { Link } from 'react-router-dom';
+import { getScream } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
     ...theme.spreadThis,
-    invisibleSeparator: {
-        border: 'none',
-        margin: '4px'
-    },
     profileImage: {
         width: 200,
         height: 200,
@@ -63,7 +59,7 @@ class ScreamDialog extends Component {
 
     render() {
         const { classes,
-            scream: { screamId, body, createAt, likeCount, commentCount, userImage, userHandle },
+            scream: { screamId, body, createAt, likeCount, commentCount, userImage, userHandle , comments},
             UI: { loading } } = this.props;
 
         const dialogMarkup = loading ? (
@@ -97,6 +93,8 @@ class ScreamDialog extends Component {
                         <span>{commentCount} comments</span>
 
                     </Grid>
+                    <hr className={classes.visibleSeparator} />
+                    <Comments comments={comments} />
                 </Grid>
             );
         return (
