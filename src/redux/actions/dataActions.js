@@ -1,7 +1,7 @@
 import {
     SET_SCREAMS, LOADING_DATA, LIKE_SCREAM, STOP_LOADING_UI,
     UNLIKE_SCREAM, DELETE_SCREAM, LOADING_UI, SET_ERRORS,
-    CLEAR_ERRORS, POST_SCREAM, SET_SCREAM
+    CLEAR_ERRORS, POST_SCREAM, SET_SCREAM, SUBMIT_COMMENT
 } from '../types';
 import axios from 'axios';
 
@@ -44,14 +44,12 @@ export const postScream = (newScream) => (dispatch) => {
             type: POST_SCREAM,
             pay: res.data
         });
-        dispatch({ type: CLEAR_ERRORS });
-        return;
+        dispatch(clearErrors());
     }).catch((error) => {
-        console.log('error to post scream');
-        // dispatch({
-        //     type: SET_ERRORS,
-        //     payload: error.response.data
-        // });
+        dispatch({
+            type: SET_ERRORS,
+            payload: error.response.data
+        });
     });
 };
 
@@ -62,13 +60,27 @@ export const likeScream = (screamsId) => (dispatch) => {
             type: LIKE_SCREAM,
             payload: res.data
         });
-        dispatch({ type: CLEAR_ERRORS });
 
+        dispatch(clearErrors());
     }).catch(error => {
         console.log(error);
     });
 };
-
+//Submit a comment
+export const submitComment = (screamsId, commentData) => (dispatch) => {
+    axios.post(`/scream/${screamsId}/comments`, commentData).then(res => {
+        dispatch({
+            type: SUBMIT_COMMENT,
+            payload: res.data
+        });
+        dispatch(clearErrors());
+    }).catch(error => {
+        dispatch({
+            type: SET_ERRORS,
+            payload: error.response.data
+        });
+    })
+};
 //Unlike a scream
 export const unlikeScream = (screamsId) => (dispatch) => {
     axios.get(`/scream/${screamsId}/unlike`).then(res => {
