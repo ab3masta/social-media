@@ -1,4 +1,4 @@
-import React, { Component , Fragment} from 'react';
+import React, { Component, Fragment } from 'react';
 import withStyles from '@material-ui/core/styles/withStyles';
 import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
@@ -40,19 +40,19 @@ const styles = {
     }
 }
 class Scream extends Component {
-   
+
     render() {
         dayjs.extend(relativeTime);
         const {
             classes,
-            scream: { body, createAt, userImage, userHandle, screamsId, likeCount, commentCount },
+            scream: { body, createAt, userImage, userHandle, screamsId, likeCount, commentCount, screamId },
             user: {
                 authenticated,
                 credentials: { handle }
             }
         } = this.props;
 
-      
+
         const deleteButton = authenticated && userHandle === handle ? (
             <DeleteScream screamsId={screamsId} />
         ) : null;
@@ -71,13 +71,13 @@ class Scream extends Component {
                     <Typography variant="body1">
                         {body}
                     </Typography>
-                     <LikeButton screamsId={screamsId}/>
+                    <LikeButton screamsId={screamsId} />
                     <span>{likeCount} Likes</span>
                     <MyButtons tip="comments">
                         <ChatIcon color="primary" />
                     </MyButtons>
                     <span>{commentCount} comments</span>
-                    <ScreamDialog screamsId={screamsId} userHandle={userHandle} />
+                    <ScreamDialog screamsId={screamsId == null ? screamId : screamsId} userHandle={userHandle} openDialog={this.props.openDialog} />
                 </CardContent>
             </Card>
         )
@@ -87,7 +87,8 @@ class Scream extends Component {
 Scream.propTypes = {
     user: propTypes.object.isRequired,
     scream: propTypes.object.isRequired,
-    classes: propTypes.object.isRequired
+    classes: propTypes.object.isRequired,
+    openDialog: propTypes.bool
 }
 const mapStateToProps = state => ({
     user: state.user
