@@ -60,7 +60,7 @@ class Scream extends Component {
             <Card className={classes.card}>
                 <CardMedia image={userImage} title="Profile image" className={classes.image} />
                 <CardContent className={classes.content}>
-                    <Typography variant="h5" component={Link} to={`/users/${userHandle}`} color="primary">
+                    <Typography variant="h5" component={Link} to={`/user/${userHandle}`} color="primary">
                         {userHandle}
                     </Typography>
                     {deleteButton}
